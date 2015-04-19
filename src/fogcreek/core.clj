@@ -31,7 +31,7 @@
                     (filter
                       #(<= (first %) needle)
                         (map
-                          #(vector (fog-hash (str w % (apply str (repeat (dec r) (first letters))))) %)
+                          #(vector (fog-hash (apply str w % (repeat (dec r) (first letters)))) %)
                             (seq letters))))))))))
                             
 (defn -main
