@@ -27,6 +27,7 @@
                 (filter #(<= (first %) needle)
                   (map #(vector (fog-hash (apply str w % (repeat (dec r) (first letters)))) %)
                     (seq letters))))))) "" (reverse (range 1 (inc word-length)))))
+
 (defn -main
   "Find the 9 letter string that when Fog Creek hashed produces 945924806726376."
   [& args]
