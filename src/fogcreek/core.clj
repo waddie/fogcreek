@@ -21,17 +21,12 @@
   [needle word-length]
   {:pre [(number? needle)
          (number? word-length)]}
-  (loop [r word-length
-         w ""]
-    (if (= r 0)
-      w
-      (recur (dec r)
-             (str w
-                  (last (last
-                    (filter #(<= (first %) needle)
-                      (map #(vector (fog-hash (apply str w % (repeat (dec r) (first letters)))) %)
-                        (seq letters))))))))))
-                            
+  (reduce (fn [w r]
+            (str w
+                (last (last
+                  (filter #(<= (first %) needle)
+                    (map #(vector (fog-hash (apply str w % (repeat (dec r) (first letters)))) %)
+                      (seq letters))))))) "" (reverse (range 1 (inc word-length)))))
 (defn -main
   "Find the 9 letter string that when Fog Creek hashed produces 945924806726376."
   [& args]
