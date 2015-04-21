@@ -2,7 +2,7 @@
   (:require [clojure.test :refer :all]
             [fogcreek.core :refer :all]))
 
-(deftest test-fog-hash
+(deftest test-supplied-example
   (testing "fog-hash"
     (is (= (fog-hash "leepadg") 680131659347) "Supplied example for hashing algorithm."))
   (testing "find-needle"
