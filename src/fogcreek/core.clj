@@ -19,8 +19,9 @@
   "Find the string of length word-length that when Fog Creek
   hashed produces the hash needle."
   [needle word-length]
-  {:pre [(number? needle)
-         (number? word-length)]}
+  {:pre  [(number? needle)
+          (number? word-length)]
+   :post [(= (fog-hash %) needle)]}
   (reduce (fn [word remainder]
     (str word
       (last (last
