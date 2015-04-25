@@ -1,12 +1,12 @@
 (ns fogcreek.core
   (:gen-class)
-  (:require [clojure.set :as set]))
+  (:require [clojure.set :refer [map-invert]]))
 
 (def letters "Valid letters for Fog Creek hashing."
   "acdegilmnoprstuw")
 
 (def letter-map "A hash map of valid letters to their index."
-  (set/map-invert (map-indexed vector letters)))
+  (map-invert (map-indexed vector letters)))
 
 (defn fog-hash
   "Returns the Fog Creek hash of a string s."
